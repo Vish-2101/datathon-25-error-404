@@ -24,6 +24,7 @@ const Drawer = styled(MuiDrawer)({
   },
 });
 
+
 export default function SideMenu() {
   return (
     <Drawer
@@ -32,30 +33,41 @@ export default function SideMenu() {
         display: { xs: 'none', md: 'block' },
         [`& .${drawerClasses.paper}`]: {
           backgroundColor: 'background.paper',
+          overflowX: 'hidden', // Prevent horizontal scrolling
         },
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          mt: 'calc(var(--template-frame-height, 0px) + 4px)',
-          p: 1.5,
-        }}
-      >
-        <SelectContent />
-      </Box>
+      {/* <Box sx={{ p: 2 }}>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Enter DataSet
+        </Typography>
+        <input
+          type="file"
+          accept=".csv, .xlsx"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) {
+              // Handle the file upload
+              console.log(file);
+            }
+          }}
+        />
+      </Box> */}
+      
       <Divider />
       <Box
         sx={{
-          overflow: 'auto',
+          overflowY: 'auto', // Only vertical scrolling
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
         <MenuContent />
-        <CardAlert />
+        {/* CardAlert component displays alerts 
+        <CardAlert />*/}
       </Box>
+      <Divider />
       <Stack
         direction="row"
         sx={{
@@ -69,15 +81,15 @@ export default function SideMenu() {
         <Avatar
           sizes="small"
           alt="Riley Carter"
-          src="/static/images/avatar/7.jpg"
+          src=""
           sx={{ width: 36, height: 36 }}
         />
         <Box sx={{ mr: 'auto' }}>
           <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
-            Riley Carter
+            Vibhor Bagga
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            riley@email.com
+            vibhor@gmail.com
           </Typography>
         </Box>
         <OptionsMenu />

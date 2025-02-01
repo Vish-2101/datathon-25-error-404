@@ -1,41 +1,79 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import InsightsRoundedIcon from '@mui/icons-material/InsightsRounded';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 export default function HighlightedCard() {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
+  const [fileName, setFileName] = React.useState<string | null>(null);
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+      console.log(file);
+    }
+  };
 
   return (
-    <Card sx={{ height: '100%' }}>
-      <CardContent>
-        <InsightsRoundedIcon />
-        <Typography
-          component="h2"
-          variant="subtitle2"
-          gutterBottom
-          sx={{ fontWeight: '600' }}
-        >
-          Explore your data
-        </Typography>
-        <Typography sx={{ color: 'text.secondary', mb: '8px' }}>
-          Uncover performance and visitor insights with our data wizardry.
-        </Typography>
+    <Card
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 3,
+        boxShadow: 3,
+        borderRadius: 2,
+      }}
+    >
+      <Typography
+        component="h2"
+        variant="h6"
+        sx={{
+          fontWeight: 600,
+          mb: 2,
+          pt: 2,
+          textAlign: "center",
+        }}
+      >
+        Upload DataSet
+      </Typography>
+      <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <input
+          type="file"
+          accept=".csv, .xlsx"
+          onChange={handleFileUpload}
+          ref={fileInputRef}
+          style={{ display: "none" }}
+        />
         <Button
           variant="contained"
-          size="small"
-          color="primary"
-          endIcon={<ChevronRightRoundedIcon />}
-          fullWidth={isSmallScreen}
+          startIcon={<CloudUploadIcon />}
+          sx={{
+            backgroundColor: "#1976d2",
+            color: "#fff",
+            textTransform: "none",
+            fontSize: "1rem",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            "&:hover": {
+              backgroundColor: "#397ecc",
+            },
+          }}
+          onClick={() => fileInputRef.current?.click()}
         >
-          Get insights
+          Choose File
         </Button>
+        {fileName && (
+          <Typography variant="body2" sx={{ mt: 2, color: "text.secondary" }}>
+            Selected file: {fileName}
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );
