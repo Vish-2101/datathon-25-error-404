@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack';
 import AppNavbar from './components/AppNavbar';
 import Header from './components/Header';
 import MainGrid from './components/MainGrid';
+// import PageViewsBarChart from './components/PageViewsBarChart';
 import SideMenu from './components/SideMenu';
 import AppTheme from './theme/AppTheme';
 import Sample from './components/sample';
@@ -57,6 +58,7 @@ export default function Dashboard(props: { disableCustomTheme?: boolean }) {
           >
             <Header />
             <MainGrid />
+            {/* <PageViewsBarChart /> */}
           </Stack>
         </Box>
       </Box>
