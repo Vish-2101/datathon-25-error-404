@@ -32,7 +32,7 @@ export default function PageViewsBarChart() {
         <Typography variant="h5" component="div" gutterBottom>
           Prediction Summary
         </Typography>
-        <Stack direction="row" spacing={4} justifyContent="center" sx={{ mb: 3 }}>
+        <Stack direction="row" spacing={4} justifyContent="center" sx={{ my: 3 }}>
           <Chip label={`Yes: ${Result.total_predictions_with_1}`} color="primary" />
           <Chip label={`No: ${Result.total_prediction_with_0}`} color="secondary" />
           <Chip label={`Male: ${Result.gender_1}`} color="primary" />
@@ -48,7 +48,7 @@ export default function PageViewsBarChart() {
           ]}
           xAxis={[{ data: barChartData.map(item => item.label), scaleType: 'band' }]}
           width={600}
-          height={300}
+          height={400}
         />
       </CardContent>
     </Card>
