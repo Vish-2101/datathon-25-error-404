@@ -1,8 +1,19 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import Dashboard from './Pages/Dashboard';
+import Navbar from './Components/Navbar';
 
 const App = () => {
   return (
-    <div className='text-2xl font-bold'>App</div>
+    
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   )
 }
 
