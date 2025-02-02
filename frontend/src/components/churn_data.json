@@ -1,0 +1,129 @@
+{
+    "churn_overview": {
+      "kpis": {
+        "current_churn_rate": "20% of customers predicted to churn",
+        "total_revenue_at_risk": "$90.00 in potential lost monthly revenue"
+      }
+    },
+    "customer_segmentation": {
+      "insights": {
+        "churn_risk_by_tier": {
+          "Basic": "High churn risk (20%)",
+          "Pro": "Moderate churn risk (10%)",
+          "Enterprise": "Low churn risk (5%)"
+        },
+        "churn_risk_by_subscription_age": {
+          "New Customers (0-3 months)": "High risk (25%)",
+          "Mid-term Customers (3-12 months)": "Moderate risk (12%)",
+          "Long-term Customers (>12 months)": "Low risk (8%)"
+        },
+        "churn_risk_by_usage": {
+          "low_engagement": "High churn risk (28%)",
+          "payment_delays": "High churn risk (35%)",
+          "support_complaints": "Moderate to high churn risk (18%)"
+        }
+      }
+    },
+    "churn_root_causes": {
+      "insights": {
+        "top_churn_drivers": [
+          "Low feature usage – 28% of churn cases",
+          "Payment issues – 32% of churn cases",
+          "Negative support interaction – 25% of churn cases"
+        ],
+        "competitor_mentions_sentiment": "Negative sentiment with competitor mentions significantly associated with higher churn rates",
+        "common_user_behaviors_before_churn": [
+          "Declining login frequency",
+          "Reduced feature interaction",
+          "Increase in customer support tickets"
+        ]
+      }
+    },
+    "early_warning_signals": {
+      "insights": {
+        "users_inactive_past_x_days": "10% of users haven't logged in for 15 days",
+        "users_declining_volume": "12% of users showing decreasing transaction or feature interaction volume",
+        "users_negative_support_sentiment": "8% of users have multiple negative support ticket sentiment scores"
+      }
+    },
+    "retention_strategy_effectiveness": {
+      "insights": {
+        "ab_test_results": {
+          "Offer A (discount)": "Slight improvement, but not significant.",
+          "Offer B (additional features)": "Significant reduction in churn for targeted group."
+        },
+        "success_rate_of_interventions": "Live chat support reduced churn by 15%. Personalized email campaign reduced it by 10%",
+        "user_retention_improvements": "Overall improvement of 10% in user retention over the last quarter due to new initiatives."
+      }
+    },
+    "revenue_at_risk_financial_impact": {
+      "insights": {
+        "projected_revenue_loss": "$90.00 potential revenue lost monthly if churned users are not retained.",
+        "customer_lifetime_value_impact": "Projected CLV reduced by 18% if churn is not controlled"
+      }
+    },
+    "interactive_customer_list": {
+      "details": [
+        {
+          "customer_id": "1",
+          "churn_probability_score": "Low",
+          "churn_risk_factors": "Low subscription age, good login frequency, positive sentiment",
+          "suggested_retention_strategy": "Monitor and Engage"
+        },
+        {
+          "customer_id": "2",
+          "churn_probability_score": "High",
+          "churn_risk_factors": "Payment status no, low login frequency, negative feedback and competitor mentions",
+          "suggested_retention_strategy": "Proactive customer support, targeted offers and payment resolutions"
+        },
+        {
+          "customer_id": "3",
+          "churn_probability_score": "Low",
+          "churn_risk_factors": "Active subscription, low login frequency, moderate satisfaction score",
+          "suggested_retention_strategy": "Monitor"
+        },
+        {
+          "customer_id": "4",
+          "churn_probability_score": "Low",
+          "churn_risk_factors": "Active subscription, moderate login frequency, negative feedback",
+           "suggested_retention_strategy": "Continue monitor"
+        },
+        {
+          "customer_id": "5",
+          "churn_probability_score": "High",
+          "churn_risk_factors": "Subscription end date present",
+          "suggested_retention_strategy": "Not applicable"
+        },
+         {
+          "customer_id": "6",
+          "churn_probability_score": "Low",
+          "churn_risk_factors": "Active subscription, high login frequency, positive feedback.",
+          "suggested_retention_strategy": "Monitor"
+         },
+         {
+          "customer_id": "7",
+          "churn_probability_score":"High",
+          "churn_risk_factors": "Active subscription, low feature usage and low support satisfaction",
+           "suggested_retention_strategy": "Proactive engagement and customer support"
+        },
+        {
+          "customer_id": "8",
+           "churn_probability_score":"Low",
+          "churn_risk_factors": "Active subscription, good login frequency, high satisfaction score",
+          "suggested_retention_strategy": "Monitor"
+        },
+         {
+          "customer_id": "9",
+           "churn_probability_score":"High",
+          "churn_risk_factors": "Subscription end date present, low login frequency, low feature usage, negative feedback and competitor mentions",
+          "suggested_retention_strategy": "Not Applicable"
+        },
+        {
+          "customer_id":"10",
+           "churn_probability_score": "Low",
+          "churn_risk_factors":"Active subscription, high login frequency, moderate satisfaction score.",
+            "suggested_retention_strategy":"Monitor"
+        }
+      ]
+    }
+  }

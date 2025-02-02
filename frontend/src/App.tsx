@@ -13,7 +13,7 @@ import MainGrid from './components/MainGrid';
 // import PageViewsBarChart from './components/PageViewsBarChart';
 import SideMenu from './components/SideMenu';
 import AppTheme from './theme/AppTheme';
-import Sample from './components/sample';
+import Hello from './components/hello';
 import {
   chartsCustomizations,
   dataGridCustomizations,
@@ -59,12 +59,12 @@ export default function Dashboard(props: { disableCustomTheme?: boolean }) {
             <Header />
             <MainGrid />
             {/* <PageViewsBarChart /> */}
+            <Hello/>
           </Stack>
         </Box>
       </Box>
       
     </AppTheme>
-    <Sample/>
     </div>
   );
 }

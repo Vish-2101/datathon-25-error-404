@@ -26,6 +26,7 @@
     "clsx": "latest",
     "dayjs": "latest",
     "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^18.3.1",
     "typescript": "latest"
   },
