@@ -71,21 +71,46 @@ function PieCenterLabel({ primaryText, secondaryText }: PieCenterLabelProps) {
   );
 }
 
-export default function ChartUserByCountry() {
+export default function ChartUserByCountry({ predictionData }: { predictionData: any[] }) {
   const [data, setData] = React.useState<UsersByCountryData | null>(null);
 
+  const stateMapping: Record<number, string> = {
+    0: "Delhi",
+    1: "Gujarat",
+    2: "Karnataka",
+    3: "Maharashtra",
+    4: "Tamil Nadu",
+    5: "Telangana",
+    6: "West Bengal",
+  };
+
   React.useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((jsonData) => {
-        if (jsonData.usersByCountry) {
-          setData(jsonData.usersByCountry);
-        } else {
-          console.error("usersByCountry section not found in JSON");
+    if (predictionData && predictionData.length) {
+      const stateCounts: Record<string, number> = {};
+      let totalUsers = 0;
+
+      predictionData.forEach(item => {
+        const stateName = stateMapping[item.state];
+        if (stateName) {
+          stateCounts[stateName] = (stateCounts[stateName] || 0) + 1;
+          totalUsers++;
         }
-      })
-      .catch((err) => console.error("Error loading data:", err));
-  }, []);
+      });
+
+      const countries = Object.entries(stateCounts).map(([name, count]) => ({
+        name,
+        value: (count / totalUsers) * 100,
+        users: count,
+        color: "#" + Math.floor(Math.random() * 16777215).toString(16),
+      }));
+
+      setData({
+        totalUsers: totalUsers.toString(),
+        countries,
+        colors: countries.map(c => c.color),
+      });
+    }
+  }, [predictionData]);
 
   if (!data) {
     return <Typography>Loading...</Typography>;
@@ -102,12 +127,12 @@ export default function ChartUserByCountry() {
     <Card variant="outlined" sx={{ display: "flex", flexDirection: "column", gap: "8px", flexGrow: 1 }}>
       <CardContent>
         <Typography component="h2" variant="subtitle2">
-          Users by country
+          Users by State
         </Typography>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <PieChart
             colors={data.colors}
-            margin={{ left: 80, right: 80, top: 80, bottom: 80 }}
+            margin={{ left: 20, right: 20, top: 20, bottom: 20 }}
             series={[
               {
                 data: data.countries.map((country) => ({ label: country.name, value: country.users })),
@@ -117,8 +142,8 @@ export default function ChartUserByCountry() {
                 highlightScope: { faded: "global", highlighted: "item" },
               },
             ]}
-            height={260}
-            width={260}
+            height={300}
+            width={300}
             slotProps={{ legend: { hidden: true } }}
           >
             <PieCenterLabel primaryText={formatValue(data.totalUsers)} secondaryText="Total Users" />
@@ -126,19 +151,19 @@ export default function ChartUserByCountry() {
         </Box>
         {data.countries.map((country, index) => (
           <Stack key={index} direction="row" sx={{ alignItems: "center", gap: 2, pb: 2 }}>
-            {flagComponents[country.name]}
+            {flagComponents[country.name] || <GlobeFlag />}
             <Stack sx={{ gap: 1, flexGrow: 1 }}>
               <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center", gap: 2 }}>
                 <Typography variant="body2" sx={{ fontWeight: "500" }}>
                   {country.name}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {country.value}%
+                  {country.value.toFixed(2)}%
                 </Typography>
               </Stack>
               <LinearProgress
                 variant="determinate"
-                aria-label="Number of users by country"
+                aria-label="Number of users by state"
                 value={country.value}
                 sx={{
                   [`& .${linearProgressClasses.bar}`]: {

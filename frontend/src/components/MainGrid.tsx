@@ -28,20 +28,20 @@ export default function MainGrid() {
         sx={{ mb: (theme) => theme.spacing(2) }}
       >
         
-        <Grid size={{ xs: 12, md: 14 }}>
+        {/* <Grid size={{ xs: 12, md: 14 }}>
           <SessionsChart />
-        </Grid>
-        <Grid size={{ xs: 10, sm: 6, lg: 10 }}>
+        </Grid> */}
+        <Grid size={{ xs: 10, sm: 6, lg: 15 }}>
           <HighlightedCard />
         </Grid>
         {/* <Grid size={{ xs: 12, md: 7 }}>
           <PageViewsBarChart />
         </Grid> */}
-        <Grid size={{ xs: 12, md: 4 }}>
+        {/* <Grid size={{ xs: 12, md: 4 }}>
           <ChartUserByCountry />
-        </Grid>
+        </Grid> */}
       </Grid>
-      <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
+      {/* <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
         Details
       </Typography>
       <Grid container spacing={2} columns={12}>
@@ -52,7 +52,7 @@ export default function MainGrid() {
           <Stack gap={2} direction={{ xs: 'column', sm: 'row', lg: 'column' }}>
           </Stack>
         </Grid>
-      </Grid>
+      </Grid> */}
       <Copyright sx={{ my: 4 }} />
     </Box>
   );

@@ -26,7 +26,6 @@ export default function HighlightedCard() {
 
  
         {uploadResult && <PageViewsBarChart jsonData={uploadResult} />}
-        {uploadResult && <ChartUserByCountry jsonData={uploadResult} />}
         
 
       </CardContent>
