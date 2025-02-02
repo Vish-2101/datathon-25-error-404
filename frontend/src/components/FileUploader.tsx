@@ -1,4 +1,8 @@
 import * as React from "react";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 interface FileUploaderProps {
   onUploadSuccess: (data: any) => void;
@@ -45,7 +49,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onUploadSuccess }) => {
   };
 
   return (
-    <div>
+    <Box sx={{ mt: 2 }}>
       <input
         type="file"
         accept=".csv, .xlsx"
@@ -53,10 +57,51 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onUploadSuccess }) => {
         ref={fileInputRef}
         style={{ display: "none" }}
       />
-      <button onClick={() => fileInputRef.current?.click()}>Choose File</button>
-      {fileName && <p>Selected file: {fileName}</p>}
-      {file && <button onClick={handleFileUpload}>Upload File</button>}
-    </div>
+      <Button
+        variant="contained"
+        startIcon={<CloudUploadIcon />}
+        sx={{
+          backgroundColor: "#3d9fff",
+          color: "#fff",
+          textTransform: "none",
+          fontSize: "1rem",
+          padding: "10px 20px",
+          borderRadius: "6px",
+          "&:hover": {
+            backgroundColor: "#3d9fff",
+          },
+          mb: 2
+        }}
+        onClick={() => fileInputRef.current?.click()}
+      >
+        Choose File
+      </Button>
+      {fileName && (
+        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+          Selected file: {fileName}
+        </Typography>
+      )}
+      {file && (
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#2cd152",
+            color: "#fff",
+            textTransform: "none",
+            fontSize: "1rem",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            marginBottom: "20px",
+            "&:hover": {
+              backgroundColor: "#2cd152",
+            },
+          }}
+          onClick={handleFileUpload}
+        >
+          Upload File
+        </Button>
+      )}
+    </Box>
   );
 };
 
