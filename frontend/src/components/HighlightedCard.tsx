@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import InsightsRoundedIcon from "@mui/icons-material/InsightsRounded";
 import FileUploader from "./FileUploader"; // Import new component
 import PageViewsBarChart from "./PageViewsBarChart"; 
+import ChartUserByCountry from "./ChartUserByCountry";
 
 export default function HighlightedCard() {
   const [uploadResult, setUploadResult] = React.useState<any>(null);
@@ -25,6 +26,8 @@ export default function HighlightedCard() {
 
  
         {uploadResult && <PageViewsBarChart jsonData={uploadResult} />}
+        {uploadResult && <ChartUserByCountry jsonData={uploadResult} />}
+        
 
       </CardContent>
     </Card>

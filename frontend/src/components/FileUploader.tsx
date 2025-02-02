@@ -27,7 +27,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onUploadSuccess }) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://f974-152-52-34-131.ngrok-free.app/predict", {
+      const response = await fetch("https://2684-2409-40c0-1059-6f49-ccf5-37ef-4324-c063.ngrok-free.app/predict", {
         method: "POST",
         body: formData,
       });

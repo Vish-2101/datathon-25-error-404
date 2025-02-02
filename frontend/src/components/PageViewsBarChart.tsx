@@ -7,20 +7,16 @@ import Stack from '@mui/material/Stack';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { useTheme } from '@mui/material/styles';
 
-
-// const [jsonData, setJsonData] = React.useState<DataEntry[]>([]);
-
 interface DataEntry {
-  prediction: number;
-  Gender: number;
+  prediction: number; // 1 for Yes, 0 for No
+  Gender: number; // 1 for Male, 0 for Female
 }
 
 interface PageViewsBarChartProps {
-  jsonData: DataEntry[]; // Expecting an array of data objects
+  jsonData: DataEntry[];
 }
 
 const PageViewsBarChart: React.FC<PageViewsBarChartProps> = ({ jsonData = [] }) => {
-
   const theme = useTheme();
   const colorPalette = [
     (theme.vars || theme).palette.primary.dark,
@@ -29,16 +25,16 @@ const PageViewsBarChart: React.FC<PageViewsBarChartProps> = ({ jsonData = [] }) 
   ];
 
   // Count occurrences of each category
-  const totalPredictionsYes = jsonData.filter((entry) => entry.prediction === 1).length;
-  const totalPredictionsNo = jsonData.filter((entry) => entry.prediction === 0).length;
-  const totalGenderMale = jsonData.filter((entry) => entry.Gender === 1).length;
-  const totalGenderFemale = jsonData.filter((entry) => entry.Gender === 0).length;
+  const totalYesMale = jsonData.filter((entry) => entry.prediction === 1 && entry.Gender === 1).length;
+  const totalNoMale = jsonData.filter((entry) => entry.prediction === 0 && entry.Gender === 1).length;
+  const totalYesFemale = jsonData.filter((entry) => entry.prediction === 1 && entry.Gender === 0).length;
+  const totalNoFemale = jsonData.filter((entry) => entry.prediction === 0 && entry.Gender === 0).length;
 
   const barChartData = [
-    { label: 'Predicted: Yes', value: totalPredictionsYes },
-    { label: 'Predicted: No', value: totalPredictionsNo },
-    { label: 'Gender: Male', value: totalGenderMale },
-    { label: 'Gender: Female', value: totalGenderFemale },
+    { label: 'Yes & Male', value: totalYesMale },
+    { label: 'No & Male', value: totalNoMale },
+    { label: 'Yes & Female', value: totalYesFemale },
+    { label: 'No & Female', value: totalNoFemale },
   ];
 
   return (
@@ -47,11 +43,11 @@ const PageViewsBarChart: React.FC<PageViewsBarChartProps> = ({ jsonData = [] }) 
         <Typography variant="h5" component="div" gutterBottom>
           Prediction Summary
         </Typography>
-        <Stack direction="row" spacing={4} justifyContent="center" sx={{ my: 3 }}>
-          <Chip label={`Yes: ${totalPredictionsYes}`} color="primary" />
-          <Chip label={`No: ${totalPredictionsNo}`} color="secondary" />
-          <Chip label={`Male: ${totalGenderMale}`} color="primary" />
-          <Chip label={`Female: ${totalGenderFemale}`} color="secondary" />
+        <Stack direction="row" spacing={2} justifyContent="center" sx={{ my: 3 }}>
+          <Chip label={`Yes & Male: ${totalYesMale}`} color="primary" />
+          <Chip label={`No & Male: ${totalNoMale}`} color="secondary" />
+          <Chip label={`Yes & Female: ${totalYesFemale}`} color="primary" />
+          <Chip label={`No & Female: ${totalNoFemale}`} color="secondary" />
         </Stack>
         <BarChart
           series={[
