@@ -31,12 +31,12 @@ export default function MainGrid() {
         <Grid size={{ xs: 12, md: 14 }}>
           <SessionsChart />
         </Grid>
-        <Grid size={{ xs: 10, sm: 6, lg: 3 }}>
+        <Grid size={{ xs: 10, sm: 6, lg: 10 }}>
           <HighlightedCard />
         </Grid>
-        <Grid size={{ xs: 12, md: 7 }}>
+        {/* <Grid size={{ xs: 12, md: 7 }}>
           <PageViewsBarChart />
-        </Grid>
+        </Grid> */}
         <Grid size={{ xs: 12, md: 4 }}>
           <ChartUserByCountry />
         </Grid>
